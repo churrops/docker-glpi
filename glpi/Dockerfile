@@ -8,7 +8,7 @@ WORKDIR /var/www/html
 RUN wget ${GLPI_URL} \
     && tar zxf glpi-${GLPI_VERSION}.tgz \
     && rm -f glpi-${GLPI_VERSION}.tgz \
-    && chown -R www-data:www-data /var/www/html/
+    && chown -R www-data:www-data /var/www/html/ \
     && rm -f /etc/nginx/sites-available/default
 
 COPY files/default /etc/nginx/sites-available/
