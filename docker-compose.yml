@@ -1,33 +1,37 @@
-version '3.1'
+version: '3'
 
 services:
-
   db:
     image: mariadb:10.3
-    env_file:
-      - ./glpi.env
     container_name: db
     volumes:
-      - "db-data:/var/lib/mysql"
+      - db-data:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: glpi
+      MYSQL_DATABASE: glpi
+      MYSQL_USER: glpi
+      MYSQL_PASSWORD: glpi
+    ports:
+      - 3306:3306
     networks:
       - glpinet
 
   glpi:
-    image: churrops/glpi
-    env_file:
-      - ./glpi.env
-    ports:
-      - 80:80
-    networks:
-      - glpinet
     depends_on:
       - db
+    image: churrops/glpi
+    ports:
+      - "80:80"
+    restart: always
+    networks:
+      - glpinet
     links:
       - db
 
-network:
+networks:
   glpinet:
   
 volumes:
-  db-data
-  glpi-data
+  db-data:
+  glpi-data:
