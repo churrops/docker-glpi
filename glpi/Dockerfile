@@ -10,6 +10,7 @@ RUN wget ${GLPI_URL} \
     && rm -f glpi-${GLPI_VERSION}.tgz \
     && touch /var/www/html/glpi/favicon.ico \
     && chown -R www-data:www-data /var/www/html/ \
+    && rm -f /var/www/html/index.nginx-debian.html \
     && rm -f /etc/nginx/sites-available/default
 
 COPY files/glpi /etc/nginx/sites-available/
