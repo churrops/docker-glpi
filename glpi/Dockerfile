@@ -1,6 +1,6 @@
 FROM churrops/nginx-php7-fpm
 
-ENV GLPI_VERSION=9.1.6
+ENV GLPI_VERSION=9.2
 ENV GLPI_URL=https://github.com/glpi-project/glpi/releases/download/${GLPI_VERSION}/glpi-${GLPI_VERSION}.tgz
 
 WORKDIR /var/www/html
