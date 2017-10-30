@@ -1,4 +1,4 @@
-version: '3'
+version: '2'
 
 services:
   db:
@@ -13,14 +13,14 @@ services:
       MYSQL_USER: glpi
       MYSQL_PASSWORD: glpi
     ports:
-      - 3306:3306
+      - "3306"
     networks:
       - glpinet
 
   glpi:
     depends_on:
       - db
-    image: churrops/glpi-test
+    image: churrops/glpi
     ports:
       - "80:80"
     restart: always
