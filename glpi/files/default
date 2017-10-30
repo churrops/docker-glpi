@@ -3,7 +3,7 @@
 server {
 	listen 80 default_server;
 	listen [::]:80 default_server;
-	root /var/www/html;
+	root /var/www/html/;
 	index index.html index.htm index.php;
 	server_name _;
 	location / {
@@ -13,6 +13,12 @@ server {
 	location ~ \.php$ {
 		include snippets/fastcgi-php.conf;
 		fastcgi_pass unix:/run/php/php7.0-fpm.sock;
+
+        	include /etc/nginx/fastcgi_params;
+        	fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        	include fastcgi_params;
+        	fastcgi_param SERVER_NAME $host;
+
 	}
 	# Expire rules for static content
 	# cache.appcache, your document html and data
@@ -38,3 +44,4 @@ server {
   		add_header Cache-Control "public";
 	}
 }
+

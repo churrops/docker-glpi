@@ -13,4 +13,4 @@ RUN wget ${GLPI_URL} \
     && rm -f /var/www/html/index.nginx-debian.html \
     && rm -f /etc/nginx/sites-available/default
 
-COPY files/glpi /etc/nginx/sites-available/
+COPY files/default /etc/nginx/sites-available/

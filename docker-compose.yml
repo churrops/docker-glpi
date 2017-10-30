@@ -20,7 +20,7 @@ services:
   glpi:
     depends_on:
       - db
-    image: churrops/glpi
+    image: churrops/glpi-test
     ports:
       - "80:80"
     restart: always
