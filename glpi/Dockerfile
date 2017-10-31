@@ -10,7 +10,9 @@ WORKDIR /var/www/html
 RUN wget ${GLPI_URL} \
     && tar zxf glpi-${GLPI_VERSION}.tgz \
     && rm -f glpi-${GLPI_VERSION}.tgz \
-    && touch /var/www/html/glpi/favicon.ico \
+    && mv /var/www/html/glpi/* /var/www/html/ \
+    && rmdir /var/www/html/glpi \
+    && touch /var/www/html/favicon.ico \
     && chown -R www-data:www-data /var/www/html/ \
     && rm -f /var/www/html/index.nginx-debian.html \
     && rm -f /etc/nginx/sites-available/default \
