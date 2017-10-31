@@ -16,7 +16,7 @@ RUN wget ${GLPI_URL} \
     && chown -R www-data:www-data /var/www/html/ \
     && rm -f /var/www/html/index.nginx-debian.html \
     && rm -f /etc/nginx/sites-available/default \
-    && 232  wget https://github.com/fusioninventory/fusioninventory-for-glpi/releases/download/glpi9.2%2B1.0/glpi-fusioninventory-9.2.1.0.tar.bz2
+    && wget https://github.com/fusioninventory/fusioninventory-for-glpi/releases/download/glpi9.2%2B1.0/glpi-fusioninventory-9.2.1.0.tar.bz2 \
     && tar jxf glpi-fusioninventory-${FUSION_VERSION}.tar.bz2 -C /var/www/html/plugins/ \
     && rm -f glpi-fusioninventory-${FUSION_VERSION}.tar.bz2
 
