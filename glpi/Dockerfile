@@ -22,15 +22,12 @@ RUN wget ${GLPI_URL} \
     && rm -f /var/www/html/index.nginx-debian.html \
     && rm -f /etc/nginx/sites-available/default \
     && apt-get update -y && apt-get install bzip2 -y && rm -rf /var/lib/apt/lists/* \
-
     && wget ${FUSION_URL} \
     && tar jxf glpi-fusioninventory-${FUSION_VERSION}.tar.bz2 -C /var/www/html/plugins/ \
     && rm -f glpi-fusioninventory-${FUSION_VERSION}.tar.bz2 \
-
     && wget ${OCS_VERSION} \
     && tar jxf glpi-ocsinventoryng-${OCS_VERSION}.tar.gz -C /var/www/html/plugins/ \
     && rm -f glpi-ocsinventoryng-${OCS_VERSION}.tar.gz \
-
     && chown -R www-data:www-data /var/www/html/
 
 COPY files/default /etc/nginx/sites-available/
