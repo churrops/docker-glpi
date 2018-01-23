@@ -25,7 +25,7 @@ RUN wget ${GLPI_URL} \
     && wget ${FUSION_URL} \
     && tar jxf glpi-fusioninventory-${FUSION_VERSION}.tar.bz2 -C /var/www/html/plugins/ \
     && rm -f glpi-fusioninventory-${FUSION_VERSION}.tar.bz2 \
-    && wget ${OCS_VERSION} \
+    && wget ${OCS_URL} \
     && tar jxf glpi-ocsinventoryng-${OCS_VERSION}.tar.gz -C /var/www/html/plugins/ \
     && rm -f glpi-ocsinventoryng-${OCS_VERSION}.tar.gz \
     && chown -R www-data:www-data /var/www/html/
