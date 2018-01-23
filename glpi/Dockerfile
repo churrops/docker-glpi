@@ -1,14 +1,11 @@
 FROM churrops/nginx-php7-fpm
 
 ENV GLPI_VERSION=9.2.1
-ENV GLPI_URL=https://github.com/glpi-project/glpi/releases/download/${GLPI_VERSION}/glpi-${GLPI_VERSION}.tgz
-
-# Plugin Fusion Inventory
-ENV FUSION_VERSION=9.2.1.0
-ENV FUSION_URL=https://github.com/fusioninventory/fusioninventory-for-glpi/releases/download/glpi9.2%2B1.0/glpi-fusioninventory-${FUSION_VERSION}.tar.bz2
-
-# Plugin OCS Inventory
 ENV OCS_VERSION=1.4.3
+ENV FUSION_VERSION=9.2.1.0
+
+ENV GLPI_URL=https://github.com/glpi-project/glpi/releases/download/${GLPI_VERSION}/glpi-${GLPI_VERSION}.tgz
+ENV FUSION_URL=https://github.com/fusioninventory/fusioninventory-for-glpi/releases/download/glpi9.2%2B1.0/glpi-fusioninventory-${FUSION_VERSION}.tar.bz2
 ENV OCS_URL=https://github.com/pluginsGLPI/ocsinventoryng/releases/download/${OCS_VERSION}/glpi-ocsinventoryng-${OCS_VERSION}.tar.gz
 
 WORKDIR /var/www/html
@@ -26,7 +23,7 @@ RUN wget ${GLPI_URL} \
     && tar jxf glpi-fusioninventory-${FUSION_VERSION}.tar.bz2 -C /var/www/html/plugins/ \
     && rm -f glpi-fusioninventory-${FUSION_VERSION}.tar.bz2 \
     && wget ${OCS_URL} \
-    && tar jxf glpi-ocsinventoryng-${OCS_VERSION}.tar.gz -C /var/www/html/plugins/ \
+    && tar zxf glpi-ocsinventoryng-${OCS_VERSION}.tar.gz -C /var/www/html/plugins/ \
     && rm -f glpi-ocsinventoryng-${OCS_VERSION}.tar.gz \
     && chown -R www-data:www-data /var/www/html/
 
